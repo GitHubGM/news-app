@@ -1,12 +1,18 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import ArticleCard from "@/Article/ArticleCard";
 
 type Article = {
-    userId: number;
-    id: number;
+    source: { id: string; name: string };
+    author: string;
     title: string;
-    body: string;
+    description: string;
+    url: string;
+    urlToImage: string;
+    publishedAt: string;
+    content: string;
+    styleType: 'fixed' | 'overlay';
 };
 
 const Article = () => {
@@ -14,19 +20,39 @@ const Article = () => {
 
     useEffect(() => {
         const fetchArticles = async () => {
-            const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
-            setArticles(response.data);
-        };
+            try {
+                const response = await axios.get('https://newsapi.org/v2/top-headlines', {
+                    params: {
+                        country: 'us',
+                        apiKey: 'ab9e93127204467ba6ef54ee2ab6ff2c',
+                    },
+                });
 
+                const fetchedArticles = response.data.articles.slice(0, 10).map((article: Article, index: number) => ({
+                    ...article,
+                    styleType: index % 2 === 0 ? 'fixed' : 'overlay', // Alternate styles
+                }));
+
+                setArticles(fetchedArticles);
+            } catch (error) {
+                console.error('Error fetching articles:', error);
+            }
+        };
         fetchArticles();
     }, []);
 
     return (
-        <div className="p-4">
+        <div className="masonry p-4">
             {articles.map((article) => (
-                <div key={article.id} className="mb-4 p-4 border rounded">
-                    <h2 className="text-xl font-bold">{article.title}</h2>
-                    <p>{article.body}</p>
+                <div key={article.url} className="masonry-item">
+                    <ArticleCard
+                        title={article.title}
+                        body={article.description || article.content}
+                        category={article.source.name}
+                        date={new Date(article.publishedAt).toLocaleDateString()}
+                        imageUrl={article.urlToImage}
+                        styleType={article.styleType}
+                    />
                 </div>
             ))}
         </div>
