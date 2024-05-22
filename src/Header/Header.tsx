@@ -10,15 +10,6 @@ export function  Header(){
         setNavbarOpen(!navbarOpen);
     };
 
-    const [openIndex, setOpenIndex] = useState(-1);
-    const handleSubmenu = (index) => {
-        if (openIndex === index) {
-            setOpenIndex(-1);
-        } else {
-            setOpenIndex(index);
-        }
-    };
-
     const usePathName = usePathname();
     return(
         <>
@@ -34,8 +25,8 @@ export function  Header(){
                         <span className="text-xl font-badScript">Мағжан Жұмабаев</span>
                     </div>
                 </div>
-                <nav className="bg-gray-100 rounded-3xl h-12 mt-4 p-2 flex items-center justify-around">
-                    <ul className="flex flex-grow justify-around items-center">
+                <nav className="bg-gray-100 rounded-3xl h-12 mt-4 p-2 flex items-center">
+                    <ul className="flex flex-grow justify-around items-center space-x-4">
                         <li><Link href="/" className="font-ubuntu">Ақпарат</Link></li>
                         <li><Link href="/" className="font-ubuntu">Әдебиеттер</Link></li>
                         <li><Link href="/" className="font-ubuntu">Өнер</Link></li>
@@ -45,9 +36,11 @@ export function  Header(){
                         <li><Link href="/" className="font-ubuntu">Спорт</Link></li>
                         <li><Link href="/" className="font-ubuntu">Тарих</Link></li>
                     </ul>
-                    <UiSearchIcon/>
+                    <div className="flex-shrink-0 ml-4">
+                        <UiSearchIcon/>
+                    </div>
                 </nav>
             </header>
         </>
-    );
+);
 }

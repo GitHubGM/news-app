@@ -2,8 +2,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+type Article = {
+    userId: number;
+    id: number;
+    title: string;
+    body: string;
+};
+
 const Article = () => {
-    const [articles, setArticles] = useState([]);
+    const [articles, setArticles] = useState<Article[]>([]);
 
     useEffect(() => {
         const fetchArticles = async () => {
