@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import {Header} from "@/Header/Header";
+import {Footer} from "@/Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +25,8 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Chau+Philomene+One:ital@0;1&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
           rel="stylesheet"/>
     </head>
-    <body className={inter.className}>{children}</body>
+
+    <body className={inter.className}><Header/>{children}<Footer/></body>
     </html>
   );
 }

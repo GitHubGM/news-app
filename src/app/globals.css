@@ -23,8 +23,10 @@ body {
 }
 
 .masonry {
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(376px, 1fr));
+  grid-template-rows: masonry;
   grid-gap: 16px;
   grid-auto-flow: dense;
 }

@@ -1,11 +1,10 @@
 import Image from "next/image";
 import {Header} from "@/Header/Header";
-import Article from "@/Article/Article";
+import Article from "@/app/Article/Article";
 
 export default function Home() {
   return (
       <>
-        <Header/>
         <Article/>
       </>
   );

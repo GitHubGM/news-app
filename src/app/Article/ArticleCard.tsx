@@ -1,6 +1,8 @@
 import React from 'react';
 
 type Article = {
+    userId: number;
+    id: number;
     title: string;
     body: string;
     category: string;
@@ -25,12 +27,12 @@ const ArticleCard: React.FC<Article> = ({ title, body, category, date, imageUrl,
                     </div>
                 </>
             ) : (
-                <div className="relative" style={{ height: '370px' }}>
-                    <img src={imageUrl} alt={title} className="w-full h-full object-cover" />
+                <div className="relative">
+                    <img src={imageUrl} alt={title} className="w-full h-full" />
                     <div className="absolute inset-0 bg-black bg-opacity-50 p-4 flex flex-col justify-end">
-            <span className="inline-block px-2 py-1 text-xs font-semibold text-white rounded-full mb-2 bg-blue-500">
-              {category}
-            </span>
+                    <span className="px-2 py-1 text-xs font-semibold w-1/6 text-center text-white rounded-full mb-2 bg-red-500">
+                        {category}
+                    </span>
                         <h2 className="text-lg font-bold text-white mb-2">{title}</h2>
                         <span className="text-gray-200 text-sm">{date}</span>
                     </div>
