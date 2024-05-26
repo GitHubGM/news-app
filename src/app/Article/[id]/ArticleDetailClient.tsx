@@ -5,6 +5,8 @@ import {useParams} from 'next/navigation';
 import axios from 'axios';
 import {UiProfileIcon} from "@/UI/UiProfileIcon";
 import {MyComment} from "@/app/Article/MyComment";
+import LikeAndShareButtons from "@/LikeAndShare/LikeAndShareButtons";
+import {ArticleAboveFooter} from "@/app/Article/ArticleAboveFooter";
 
 type Article = {
     userId: number;
@@ -75,6 +77,7 @@ const ArticleDetailClient: React.FC = () => {
             </span><span className="text-gray-500 text-sm ml-5">{article.date}</span>
             <img src={article.imageUrl} alt={article.title} className="w-full h-96 object-cover mb-4"/>
             <p className="text-blue-950 mb-4">{article.body}</p>
+            <LikeAndShareButtons/>
             <div className="mt-8">
                 <h2 className="text-2xl font-ubuntu mb-4">Пікірлер({comments.length})</h2>
                     <MyComment/>
@@ -95,6 +98,9 @@ const ArticleDetailClient: React.FC = () => {
                 <div className="flex justify-end">
                 <button className="bg-blue-900 text-white w-2/5 rounded-3xl  px-4 py-2 mt-4">Қосу</button>
                 </div>
+            </div>
+            <div className="p-4">
+            <ArticleAboveFooter/>
             </div>
         </div>
     );

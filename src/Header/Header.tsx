@@ -10,7 +10,7 @@ export function  Header(){
         setNavbarOpen(!navbarOpen);
     };
 
-    const usePathName = usePathname();
+    const pathname = usePathname();
     return(
         <>
             <header className="p-4">
@@ -27,7 +27,7 @@ export function  Header(){
                 </div>
                 <nav className="bg-gray-100 rounded-3xl w-11/12 h-12 mt-4 p-2 flex mr-auto ml-auto items-center justify-between">
                     <ul className="flex justify-around items-center w-1/2 space-x-4">
-                        <li><Link href="/" className="bg-blue-950 p-3 rounded-3xl text-white font-ubuntu">Ақпарат</Link></li>
+                        <li><Link href="/" className={`font-ubuntu ${pathname==='/'?'bg-blue-950 p-3 rounded-3xl text-white':''}`}>Ақпарат</Link></li>
                         <li><Link href="/" className="font-ubuntu">Әдебиеттер</Link></li>
                         <li><Link href="/" className="font-ubuntu">Өнер</Link></li>
                         <li><Link href="/" className="font-ubuntu">Ғылым</Link></li>

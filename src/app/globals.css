@@ -22,19 +22,26 @@ body {
 
 }
 
+.first-two-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
 .masonry {
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(376px, 1fr));
-  grid-template-rows: masonry;
+  grid-template-columns: repeat(3, 376px);
+  grid-auto-rows: masonry;
   grid-gap: 16px;
-  grid-auto-flow: dense;
+  justify-content: center;
 }
 
-.masonry-item {
-  break-inside: avoid;
-  margin-bottom: 16px;
-}
+/*.masonry-item {*/
+/*  break-inside: avoid;*/
+/*  margin-bottom: 16px;*/
+/*}*/
 
 @layer utilities {
   .text-balance {

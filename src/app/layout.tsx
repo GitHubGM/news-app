@@ -26,7 +26,14 @@ export default function RootLayout({
           rel="stylesheet"/>
     </head>
 
-    <body className={inter.className}><Header/>{children}<Footer/></body>
+    <body className={inter.className}>
+    <div className="w-10/12 mr-auto ml-auto">
+      <Header/>
+      {children}
+    </div>
+      <Footer/>
+
+    </body>
     </html>
   );
 }
